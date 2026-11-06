@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:${PORT:-8766}:80"
+      - "[::1]:${PORT:-8766}:80"
+    volumes:
+      - ./app:/var/www/app:ro
+      - ./public:/var/www/public:ro
+    restart: unless-stopped

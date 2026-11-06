@@ -1,0 +1,20 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php index.html
+
+RewriteEngine On
+RewriteRule ^\.well-known/ - [L]
+RewriteRule "(^|/)\." - [R=404,L]
+RewriteRule ^(?:index|404)\.html$ index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+    <Files "resume.pdf">
+        Header set Content-Disposition 'inline; filename="Jason Woodland Resume.pdf"'
+    </Files>
+</IfModule>
