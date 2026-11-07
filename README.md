@@ -29,7 +29,9 @@ English URLs remain `/`, `/projects/`, `/contact/`, and `/projects/{slug}/`. Chi
 
 The language control is a real link to the matching page in the other language, so it works without JavaScript and can be opened in a new tab. JavaScript remembers the selection in local storage and suppresses entrance and page-transition animations for an ordinary language switch. The explicit URL determines the rendered language; stored preferences never override a shared link, and there are no automatic language redirects or locale query parameters.
 
-`public/assets/site.js` makes the glass highlights follow nearby pointers, including a softer highlight on the StudyFrog slab. Reduced-motion settings keep the lighting stationary. Ordinary page navigation slides the outgoing content up 14px while fading and blurring it over 220ms, then reveals the incoming elements with staggered blur entrances. The header stays steady. The incoming snapshot has no second fade, and rendering waits for the main content to be parsed. Fallback navigation retains its faded frame through pagehide and restores it on pageshow; cached pages keep their entrance state instead of rewinding visible content.
+The root text size is 112.5% of the browser default. Layout widths, type, icons, spacing, and lighting use rem units to scale together; at the usual default this gives an 18px body size and a 1080px maximum content width. Responsive breakpoints and fluid headings accommodate the larger scale.
+
+`public/assets/site.js` makes the glass highlights follow nearby pointers, including a softer highlight on the StudyFrog slab. Reduced-motion settings keep the lighting stationary. Ordinary page navigation slides the outgoing content up 0.875rem while fading and blurring it over 220ms, then reveals the incoming elements with staggered blur entrances. The header stays steady. The incoming snapshot has no second fade, and rendering waits for the main content to be parsed. Fallback navigation retains its faded frame through pagehide and restores it on pageshow; cached pages keep their entrance state instead of rewinding visible content.
 
 ## Checks
 
@@ -63,6 +65,8 @@ docker run -d --name jasonwoodland-site -p 127.0.0.1:8766:80 -p '[::1]:8766:80' 
 Place your HTTPS reverse proxy in front of the container. Canonical URLs use `https://jasonwoodland.com`. For a separate PHP host, copy `app/` and `public/`, point its document root at `public/`, and route missing paths to `public/index.php` as shown in `docker/site.conf`. There is no static HTML generation step.
 
 ## Assets
+
+Glass surfaces and lighting use prerendered, dithered PNGs in `public/assets/gradients/`. Regenerate them with `python3 scripts/render-gradients.py` (standard library only). Pointer lighting includes distance-based rim reflections with per-surface reflectivity; the StudyFrog buttons also have a diffuse overhead reflection.
 
 StudyFrog’s app icon comes from its iOS app assets. Google Sans and Roboto Flex are self-hosted Latin subsets from Google Fonts; their OFL licences are included in `public/assets/fonts/`. The existing `bg.jpeg` and `bg2.jpeg` files are retained and unused.
 

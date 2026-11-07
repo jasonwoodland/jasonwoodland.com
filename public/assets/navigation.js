@@ -15,6 +15,7 @@ export function navigationTarget(event, currentURL) {
 export function initPageTransitions({ document: doc = document, window: win = window, beforeLeave = () => {} } = {}) {
   const nativeTransitions = typeof win.CSSViewTransitionRule !== 'undefined';
   const motion = win.matchMedia('(prefers-reduced-motion: reduce)');
+  const scale = (parseFloat(win.getComputedStyle?.(doc.documentElement).fontSize) || 16) / 16;
   let destination = null;
   let fading = false;
   let committed = false;
@@ -68,7 +69,7 @@ export function initPageTransitions({ document: doc = document, window: win = wi
         animations.push(element.animate(
           [
             { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
-            { opacity: 0, filter: 'blur(8px)', transform: 'translateY(-14px)' }
+            { opacity: 0, filter: `blur(${8 * scale}px)`, transform: `translateY(${-14 * scale}px)` }
           ],
           { duration: 220, easing: 'cubic-bezier(.4, 0, .6, 1)', fill: 'forwards' }
         ));

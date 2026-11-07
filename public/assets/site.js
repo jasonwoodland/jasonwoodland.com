@@ -7,7 +7,14 @@ initPageTransitions();
 const surfaces = [...document.querySelectorAll('.feature, .button, .glass-card, .app-icon-link')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const litSurfaces = new Set();
-const lightRadius = 96;
+const lightRadius = 6 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+const edgeRadius = 24 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+for (const surface of surfaces) {
+  const edge = document.createElement('span');
+  edge.className = 'glass-edge';
+  edge.setAttribute('aria-hidden', 'true');
+  surface.append(edge);
+}
 let pointer = null;
 let frame = 0;
 
@@ -46,21 +53,26 @@ function scheduleLights() {
       const dy = Math.max(bounds.top - pointer.y, 0, pointer.y - bounds.bottom);
       const approach = Math.max(0, 1 - Math.hypot(dx, dy) / lightRadius);
       const proximity = approach * approach * (3 - 2 * approach);
+      const edgeApproach = Math.max(0, 1 - Math.hypot(dx, dy) / edgeRadius);
+      const edgeProximity = edgeApproach * edgeApproach * (3 - 2 * edgeApproach);
       // Keep the light's origin outside the surface until the pointer enters it.
-      const x = (pointer.x - bounds.left) / (bounds.width || 1) * 100;
-      const y = (pointer.y - bounds.top) / (bounds.height || 1) * 100;
-      return { element, x, y, proximity };
+      const x = pointer.x - bounds.left;
+      const y = pointer.y - bounds.top;
+      return { element, x, y, width: bounds.width, height: bounds.height, proximity, edgeProximity };
     });
     frame = 0;
-    for (const { element, x, y, proximity } of positions) {
-      if (!proximity) {
+    for (const { element, x, y, width, height, proximity, edgeProximity } of positions) {
+      if (!proximity && !edgeProximity) {
         if (litSurfaces.has(element)) resetLight(element);
         continue;
       }
       litSurfaces.add(element);
-      element.style.setProperty('--light-x', `${x}%`);
-      element.style.setProperty('--light-y', `${y}%`);
+      element.style.setProperty('--light-x', `${x}px`);
+      element.style.setProperty('--light-y', `${y}px`);
+      element.style.setProperty('--light-center-offset', `${x - width / 2}px`);
+      element.style.setProperty('--light-under-y', `${height * 1.2}px`);
       element.style.setProperty('--light-proximity', String(proximity));
+      element.style.setProperty('--edge-proximity', String(edgeProximity));
     }
   });
 }
@@ -68,6 +80,7 @@ function scheduleLights() {
 function resetLight(element) {
   litSurfaces.delete(element);
   element.style.removeProperty('--light-proximity');
+  element.style.removeProperty('--edge-proximity');
   // Retain the last origin while the light fades out.
 }
 
@@ -80,8 +93,11 @@ function clearLights() {
 
 function centerLight(element) {
   resetLight(element);
-  element.style.removeProperty('--light-x');
-  element.style.removeProperty('--light-y');
+  const bounds = element.getBoundingClientRect();
+  element.style.setProperty('--light-x', `${bounds.width / 2}px`);
+  element.style.setProperty('--light-y', '0px');
+  element.style.setProperty('--light-center-offset', '0px');
+  element.style.setProperty('--light-under-y', `${bounds.height * 1.2}px`);
 }
 
 document.addEventListener('pointermove', positionLight, { passive: true });

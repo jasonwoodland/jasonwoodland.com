@@ -22,7 +22,8 @@
   --secondary: #a1a09e;
   --muted: #797875;
   font-family: "Google Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
+  /* Shared scale: rem dimensions grow together with the root text size. */
+  font-size: 112.5%;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -35,9 +36,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-width: 44px;
-  min-height: 44px;
+  gap: 0.375rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   padding: 0;
   border: 0;
   background: none;
@@ -48,11 +49,11 @@
   color: var(--foreground);
 }
 .language-toggle svg {
-  width: 19px;
-  height: 19px;
+  width: 1.1875rem;
+  height: 1.1875rem;
 }
 .language-current {
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 500;
 }
 .sr-only {
@@ -109,15 +110,15 @@
   }
   to {
     opacity: 0;
-    filter: blur(8px);
-    transform: translateY(-14px);
+    filter: blur(0.5rem);
+    transform: translateY(-0.875rem);
   }
 }
 @keyframes content-arrive {
   from {
     opacity: 0;
-    filter: blur(var(--enter-blur, 12px));
-    transform: translateY(-6px);
+    filter: blur(var(--enter-blur, 0.75rem));
+    transform: translateY(-0.375rem);
   }
   to {
     opacity: 1;
@@ -128,7 +129,7 @@
 @keyframes title-arrive {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-0.375rem);
   }
   to {
     opacity: 1;
@@ -148,8 +149,8 @@
 }
 .enter-layer {
   display: block;
-  padding: 64px;
-  margin: -64px;
+  padding: 4rem;
+  margin: -4rem;
   overflow: visible;
   pointer-events: none;
 }
@@ -163,7 +164,7 @@
   gap: inherit;
 }
 .display-name .enter-layer {
-  --enter-blur: 16px;
+  --enter-blur: 1rem;
 }
 [data-enter]:focus-within,
 .enter-shell:focus-within > [data-enter] {
@@ -175,7 +176,7 @@
 }
 html {
   background: var(--background);
-  scroll-padding-top: 32px;
+  scroll-padding-top: 2rem;
   scrollbar-gutter: stable;
 }
 /* Only the viewport clips horizontally; the inner blur layers remain visible. */
@@ -227,38 +228,38 @@ ul {
   background: #ffffff26;
 }
 :focus-visible {
-  outline: 2px solid var(--foreground);
-  outline-offset: 7px;
-  border-radius: 2px;
+  outline: 0.125rem solid var(--foreground);
+  outline-offset: 0.4375rem;
+  border-radius: 0.125rem;
 }
 main:focus {
   outline: none;
 }
 
 .site-shell {
-  width: min(100% - 112px, 960px);
+  width: min(100% - 7rem, 60rem);
   margin-inline: auto;
 }
 .site-header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  column-gap: 24px;
-  height: 104px;
+  column-gap: 1.5rem;
+  height: 6.5rem;
   view-transition-name: site-header;
 }
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 2rem;
   flex-shrink: 0;
 }
 .main-nav > a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 2.75rem;
   font-family: "Google Sans", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--secondary);
@@ -270,24 +271,24 @@ main:focus {
 .main-nav [aria-current] {
   color: var(--foreground);
 }
-@media (min-width: 1200px) {
+@media (min-width: 84.375em) {
   .site-header {
     position: relative;
   }
   .language-toggle {
     position: absolute;
     top: 50%;
-    right: calc(50% - 50vw + 32px);
+    right: calc(50% - 50vw + 2rem);
     transform: translateY(-50%);
   }
 }
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   min-width: 0;
   margin-right: auto;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.5;
   white-space: nowrap;
@@ -296,7 +297,7 @@ main:focus {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  min-height: 44px;
+  min-height: 2.75rem;
   color: var(--secondary);
   transition: color 180ms ease;
 }
@@ -316,8 +317,8 @@ main:focus {
   text-overflow: ellipsis;
 }
 .arrow {
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   flex: 0 0 auto;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -325,7 +326,7 @@ main:focus {
   stroke-linejoin: round;
 }
 :is(.home-page, .contact-page) .site-shell {
-  --header-height: 104px;
+  --header-height: 6.5rem;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -338,7 +339,7 @@ main:focus {
   flex: 1;
   display: flex;
   align-items: center;
-  padding-block: 48px calc(var(--header-height) + 48px);
+  padding-block: 3rem calc(var(--header-height) + 3rem);
 }
 
 .display-name,
@@ -382,7 +383,7 @@ main:focus {
   width: fit-content;
   max-width: 100%;
   padding-block: 0.08em;
-  font-size: clamp(28px, 3.2vw, 40px);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
   letter-spacing: -0.015em;
   line-height: 1.4;
   overflow: visible;
@@ -393,9 +394,9 @@ main:focus {
   padding-block: 0.05em 0;
 }
 .intro-bio {
-  max-width: 580px;
-  margin-top: 10px;
-  font-size: 16px;
+  max-width: 36.25rem;
+  margin-top: 0.625rem;
+  font-size: 1rem;
   line-height: 1.85;
   color: var(--secondary);
 }
@@ -404,13 +405,13 @@ main:focus {
   color: var(--foreground);
 }
 .intro-bio p + p {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 .intro-bio a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: #ffffff20;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.25rem;
   transition:
     color 200ms ease,
     text-decoration-color 200ms ease;
@@ -422,12 +423,12 @@ main:focus {
 .icon-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 0.75rem;
 }
 .icon-links a {
   display: inline-flex;
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
+  height: 2.25rem;
   align-items: center;
   justify-content: center;
   color: var(--secondary);
@@ -437,12 +438,12 @@ main:focus {
   color: var(--foreground);
 }
 .icon-links svg {
-  width: 19px;
-  height: 19px;
+  width: 1.1875rem;
+  height: 1.1875rem;
 }
 .intro-icons {
-  margin-top: 26px;
-  margin-left: -8px;
+  margin-top: 1.625rem;
+  margin-left: -0.5rem;
 }
 
 /* Each nested surface keeps its own light position and proximity. */
@@ -450,6 +451,41 @@ main:focus {
   --light-x: 50%;
   --light-y: 0%;
   --light-proximity: 0;
+  --edge-proximity: 0;
+  --glass-reflectivity: 0.22;
+}
+/* A hollow mask confines the dithered reflection to the rounded glass rim.
+   Solid masks do not introduce any gradient quantisation. */
+.glass-edge {
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: url("gradients/reflection.png")
+    left calc(var(--light-x) - 24rem)
+    top calc(var(--light-y) - 24rem) / 48rem 48rem no-repeat;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: calc(var(--edge-proximity) * var(--glass-reflectivity));
+  transition: opacity 350ms ease;
+}
+.button {
+  --glass-reflectivity: 0.5;
+}
+.glass-card {
+  --glass-reflectivity: 0.16;
+}
+.app-icon-link {
+  --glass-reflectivity: 0.34;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glass-edge {
+    display: none;
+  }
 }
 .feature {
   position: relative;
@@ -460,35 +496,27 @@ main:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 52px 40px 48px;
+  gap: 1.25rem;
+  padding: 3.25rem 2.5rem 3rem;
   text-align: center;
   border: 1px solid transparent;
-  border-radius: 28px;
+  border-radius: 1.75rem;
   background:
-    radial-gradient(
-        ellipse 70% 110% at 50% -25%,
-        #ffffff0e,
-        #ffffff03 45%,
-        transparent 75%
-      )
-      padding-box,
-    linear-gradient(#171717e8, #121212f5) padding-box,
-    linear-gradient(165deg, #ffffff24, #ffffff0c 38%, #ffffff05 72%, #ffffff0e)
-      border-box;
+    url("gradients/feature.png") center / 100% 100% padding-box,
+    url("gradients/border.png") center / 100% 100% border-box;
   box-shadow:
-    0 30px 80px -20px #0009,
-    0 70px 160px -40px #000b,
+    0 1.875rem 5rem -1.25rem #0009,
+    0 4.375rem 10rem -2.5rem #000b,
     inset 0 1px 0 #ffffff05;
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
 }
 .feature::before {
   content: "";
   position: absolute;
   inset: 0 15% auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #ffffff30, transparent);
+  background: url("gradients/edge.png") center / 100% 100% no-repeat;
   pointer-events: none;
 }
 .feature::after {
@@ -498,11 +526,9 @@ main:focus {
   z-index: -1;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse 460px 300px at var(--light-x) var(--light-y),
-    #ffffff08,
-    transparent 75%
-  );
+  background: url("gradients/feature-light.png")
+    left calc(var(--light-x) - 28.75rem)
+    top calc(var(--light-y) - 18.75rem) / 57.5rem 37.5rem no-repeat;
   opacity: var(--light-proximity);
   transition: opacity 700ms cubic-bezier(0.2, 0.65, 0.2, 1);
 }
@@ -514,35 +540,35 @@ main:focus {
   isolation: isolate;
   display: block;
   flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 13px;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.8125rem;
   --light-intensity: 0.6;
 }
 .app-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 13px;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.8125rem;
   object-fit: cover;
 }
 .feature-copy {
-  max-width: 560px;
+  max-width: 35rem;
 }
 .feature-copy h2 {
-  font-size: clamp(22px, 2.1vw, 26px);
+  font-size: clamp(1.375rem, 2.3625vw, 1.625rem);
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.025em;
-  max-width: 650px;
+  max-width: 40.625rem;
   margin-inline: auto;
 }
 .feature-copy h2 span {
   color: var(--foreground);
 }
 .feature-copy p {
-  max-width: 530px;
-  margin: 15px auto 0;
-  font-size: 14px;
+  max-width: 33.125rem;
+  margin: 0.9375rem auto 0;
+  font-size: 0.875rem;
   color: var(--secondary);
   line-height: 1.8;
 }
@@ -551,8 +577,8 @@ main:focus {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  margin-top: 25px;
+  gap: 0.75rem;
+  margin-top: 1.5625rem;
 }
 .feature-actions {
   justify-content: center;
@@ -563,33 +589,24 @@ main:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  min-height: 44px;
-  padding: 11px 20px;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.6875rem 1.25rem;
   color: var(--foreground);
-  border: 1px solid #ffffff1a;
-  border-radius: 999px;
-  background:
-    radial-gradient(ellipse 90% 150% at 50% -50%, #ffffff10, transparent 75%),
-    #2a2a2a;
-  box-shadow:
-    0 8px 24px -10px #000b,
-    inset 0 1px 0 #ffffff0a;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  font-size: 13px;
+  border: 1px solid;
+  border-color: #ffffff16 #ffffff09 #ffffff03;
+  border-radius: 62.4375rem;
+  background: #2a2a2a url("gradients/button.png") center / 100% 100%;
+  background-clip: padding-box;
+  -webkit-backdrop-filter: blur(0.75rem);
+  backdrop-filter: blur(0.75rem);
+  font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.6;
-  transition:
-    color 250ms ease,
-    box-shadow 750ms ease;
+  transition: color 250ms ease, background-color 140ms ease;
 }
 .button:is(:hover, :focus-visible) {
   color: #fff;
-  box-shadow:
-    0 10px 32px -10px #000b,
-    0 0 24px -10px #ffffff10,
-    inset 0 1px 0 #ffffff24;
 }
 
 /* Nearby pointers illuminate the surface and a second pool beneath the glass. */
@@ -602,21 +619,14 @@ main:focus {
   pointer-events: none;
   opacity: calc(var(--light-proximity, 0) * var(--light-intensity, 0.85));
   background:
-    radial-gradient(
-      ellipse var(--light-width, 130px) var(--light-height, 90px) at
-        var(--light-x, 50%) var(--light-y, 0%),
-      #ffffff30,
-      transparent
-    ),
-    radial-gradient(
-      ellipse 80px 25px at var(--light-x, 50%) 120%,
-      #ffffff0c,
-      transparent
-    );
+    url("gradients/light.png")
+      left calc(var(--light-x, 50%) - var(--light-width, 8.125rem))
+      top calc(var(--light-y, 0%) - var(--light-height, 5.625rem)) /
+      calc(var(--light-width, 8.125rem) * 2) calc(var(--light-height, 5.625rem) * 2),
+    url("gradients/under-light.png")
+      left calc(var(--light-x, 50%) - 5rem) top calc(var(--light-under-y, 0px) - 1.5625rem) /
+      10rem 3.125rem;
   background-repeat: no-repeat;
-  box-shadow:
-    inset 0 1px 0 #ffffff20,
-    inset 0 -1px 0 #ffffff08;
   transition: opacity 700ms cubic-bezier(0.2, 0.65, 0.2, 1);
 }
 :is(.button, .glass-card, .app-icon-link)::after {
@@ -624,14 +634,11 @@ main:focus {
   position: absolute;
   inset: 35% 12% -35%;
   z-index: -1;
-  border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at var(--light-x, 50%) 50%,
-    #ffffff1c,
-    transparent 70%
-  );
-  filter: blur(15px);
+  background: url("gradients/halo.png")
+    left calc(var(--light-center-offset, 0px) * var(--halo-scale, 0.76))
+    center / 100% 100% no-repeat;
+  filter: blur(0.9375rem);
   opacity: calc(var(--light-proximity, 0) * var(--light-intensity, 0.85));
   transition: opacity 850ms ease;
 }
@@ -641,13 +648,41 @@ main:focus {
 :is(.button, .glass-card, .app-icon-link):is(:hover, :focus-visible)::after {
   opacity: var(--light-intensity, 0.85);
 }
+.button::before {
+  background-image: url("gradients/light.png");
+}
+.button::after {
+  content: none;
+}
+/* The feature's overhead light reflects in the rim even without a pointer. */
+.feature .button {
+  box-shadow: 0 0.5rem 1.5rem -0.625rem #0008;
+  transition: color 250ms ease, background-color 140ms ease, box-shadow 750ms ease;
+}
+.feature .button:is(:hover, :focus-visible) {
+  box-shadow: 0 0.625rem 2rem -0.625rem #0008;
+}
+.feature .button::after {
+  content: "";
+  inset: -1px;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  background: url("gradients/reflection.png") center bottom / 220% 200% no-repeat;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: none;
+  opacity: 0.3;
+}
 .quiet-link,
 .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 0.5625rem;
   color: var(--secondary);
-  font-size: 12px;
+  font-size: 0.75rem;
   transition: color 200ms ease;
 }
 .quiet-link:hover,
@@ -656,47 +691,57 @@ main:focus {
 }
 .quiet-link .arrow,
 .text-link .arrow {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .project-grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 1.25rem;
 }
 .project-item {
   min-width: 0;
 }
 .glass-card {
   --light-intensity: 0.22;
-  --light-width: 380px;
-  --light-height: 210px;
+  --light-width: 23.75rem;
+  --light-height: 13.125rem;
   position: relative;
   isolation: isolate;
   display: block;
   height: 100%;
-  padding: 22px 24px;
+  padding: 1.375rem 1.5rem;
   border: 1px solid #ffffff0b;
-  border-radius: 20px;
-  background:
-    radial-gradient(ellipse 110% 170% at 50% -80%, #ffffff08, transparent 70%),
-    #242424;
+  border-radius: 1.25rem;
+  background: #242424 url("gradients/card.png") center / 100% 100%;
   box-shadow:
-    0 14px 36px -25px #0009,
+    0 0.875rem 2.25rem -1.5625rem #0009,
     inset 0 1px 0 #ffffff06;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(0.75rem);
+  backdrop-filter: blur(0.75rem);
 }
 .glass-card::after {
+  --halo-scale: 0.88;
   inset: 25% 6% -30%;
-  filter: blur(24px);
+  filter: blur(1.5rem);
+}
+/* Screen a little light into the textured surface without lifting the text. */
+:is(.button, .glass-card) {
+  background-color: #000;
+  background-blend-mode: screen;
+}
+.glass-card {
+  transition: background-color 140ms ease;
+}
+:is(.button, a.glass-card):is(:hover, :focus-visible) {
+  background-color: #020202;
 }
 .project-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 14px;
-  column-gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 0.875rem;
+  column-gap: 1.25rem;
   align-items: center;
 }
 .project-copy {
@@ -705,87 +750,87 @@ main:focus {
 }
 .project-chevron {
   color: var(--muted);
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
   stroke: currentColor;
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .project-card h3 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.015em;
   color: var(--foreground);
 }
 .project-card p {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--secondary);
-  margin-top: 7px;
-  max-width: 380px;
+  margin-top: 0.4375rem;
+  max-width: 23.75rem;
 }
 
 .site-footer {
-  padding-block: 20px 35px;
+  padding-block: 1.25rem 2.1875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  font-size: 12px;
+  gap: 1.5rem;
+  font-size: 0.75rem;
   color: var(--secondary);
 }
 .footer-name {
 }
 .footer-icons {
-  gap: 4px;
-  margin-right: -8px;
+  gap: 0.25rem;
+  margin-right: -0.5rem;
 }
 .footer-icons svg {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 .skip-link {
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: 1rem;
+  left: 1rem;
   transform: translateY(-180%);
   background: var(--foreground);
   color: var(--background);
   z-index: 10;
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
 }
 .skip-link:focus {
   transform: translateY(0);
 }
 
 .page-intro {
-  padding-block: 63px 62px;
+  padding-block: 3.9375rem 3.875rem;
 }
 .page-title {
-  font-size: clamp(28px, 3.2vw, 40px);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
   line-height: 1.4;
   letter-spacing: -0.015em;
   overflow-wrap: anywhere;
   padding-block: 0.08em;
 }
 .page-description {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.65;
   color: var(--secondary);
-  margin-top: 19px;
-  max-width: 680px;
+  margin-top: 1.1875rem;
+  max-width: 42.5rem;
 }
 .collection {
-  padding-top: 48px;
-  margin-bottom: 95px;
+  padding-top: 3rem;
+  margin-bottom: 5.9375rem;
 }
 .collection-feature {
-  margin-bottom: 72px;
+  margin-bottom: 4.5rem;
 }
 .featured-works-heading {
-  margin-bottom: 26px;
-  font-size: 28px;
+  margin-bottom: 1.625rem;
+  font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.025em;
@@ -795,7 +840,7 @@ main:focus {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 0.75rem;
   padding: 0;
   list-style: none;
 }
@@ -805,25 +850,25 @@ main:focus {
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
   max-width: 100%;
-  min-height: 44px;
+  min-height: 2.75rem;
 }
 .contact-link > svg:first-child {
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   color: var(--secondary);
 }
 .contact-username {
   min-width: 0;
   color: var(--foreground);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.5;
   overflow-wrap: anywhere;
   text-decoration: underline;
   text-decoration-color: transparent;
-  text-underline-offset: 5px;
+  text-underline-offset: 0.3125rem;
   transition: text-decoration-color 200ms ease;
 }
 .contact-link:hover .contact-username {
@@ -835,17 +880,17 @@ main:focus {
 
 .detail-intro {
   position: relative;
-  padding-bottom: 50px;
+  padding-bottom: 3.125rem;
 }
 .detail-eyebrow {
-  margin-bottom: 17px;
+  margin-bottom: 1.0625rem;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .detail-intro .page-title {
   position: relative;
   z-index: 1;
-  padding-block: 16px;
+  padding-block: 1rem;
   overflow: visible;
   filter: none;
   will-change: opacity, transform;
@@ -853,52 +898,52 @@ main:focus {
 }
 .detail-app-icon-shell {
   isolation: isolate;
-  width: 90px;
-  height: 90px;
-  margin-block: 30px 14px;
+  width: 5.625rem;
+  height: 5.625rem;
+  margin-block: 1.875rem 0.875rem;
 }
 .detail-app-icon {
-  width: 90px;
-  height: 90px;
-  border-radius: 21px;
+  width: 5.625rem;
+  height: 5.625rem;
+  border-radius: 1.3125rem;
 }
 .detail-actions {
-  margin-top: 29px;
+  margin-top: 1.8125rem;
 }
 .detail-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 18px;
-  padding-top: 24px;
-  padding-bottom: 82px;
+  gap: 1.125rem;
+  padding-top: 1.5rem;
+  padding-bottom: 5.125rem;
 }
 .detail-section-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .prose {
-  max-width: 660px;
+  max-width: 41.25rem;
   color: var(--secondary);
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.85;
 }
 .prose p + p {
-  margin-top: 22px;
+  margin-top: 1.375rem;
 }
 .prose h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--foreground);
   font-weight: 500;
-  margin-top: 36px;
-  margin-bottom: 16px;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.025em;
 }
 .prose ul {
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 .prose li {
-  padding-left: 5px;
-  margin-block: 10px;
+  padding-left: 0.3125rem;
+  margin-block: 0.625rem;
 }
 .prose li::marker {
   color: var(--muted);
@@ -907,36 +952,36 @@ main:focus {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 9px;
-  margin-top: 27px;
+  gap: 0.5625rem;
+  margin-top: 1.6875rem;
 }
 .research-links a {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .project-pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-  padding-block: 30px;
-  margin-bottom: 80px;
+  gap: 1.875rem;
+  padding-block: 1.875rem;
+  margin-bottom: 5rem;
 }
 .project-pagination > .quiet-link .arrow {
   transform: rotate(180deg);
 }
 .next-project {
   display: grid;
-  grid-template-columns: 1fr 20px;
-  column-gap: 28px;
+  grid-template-columns: 1fr 1.25rem;
+  column-gap: 1.75rem;
 }
 .next-project > span {
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--muted);
   grid-column: 1;
 }
 .next-project strong {
   grid-column: 1;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--foreground);
 }
@@ -949,39 +994,39 @@ main:focus {
   min-height: 65vh;
 }
 .error-intro .button {
-  margin-top: 30px;
+  margin-top: 1.875rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 56.25em) {
   .site-shell {
-    width: calc(100% - 64px);
+    width: calc(100% - 4rem);
   }
   .site-header {
-    height: 100px;
+    height: 6.25rem;
   }
   :is(.home-page, .contact-page) .site-shell {
-    --header-height: 100px;
+    --header-height: 6.25rem;
   }
   .feature-copy h2 {
-    font-size: 23px;
+    font-size: 1.4375rem;
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 39.375em) {
   .site-shell {
-    width: calc(100% - 44px);
+    width: calc(100% - 2.75rem);
   }
   .site-header {
-    height: 88px;
+    height: 5.5rem;
   }
   .main-nav {
-    gap: 24px;
+    gap: 1.5rem;
   }
   .main-nav > a {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .main-nav {
-    gap: 16px;
+    gap: 1rem;
   }
   .projects-page .main-nav [aria-current="page"],
   .contact-page .main-nav [aria-current="page"],
@@ -989,16 +1034,16 @@ main:focus {
     display: none;
   }
   .breadcrumbs {
-    font-size: 12px;
-    gap: 7px;
+    font-size: 0.75rem;
+    gap: 0.4375rem;
   }
   .detail-page .site-header {
     flex-wrap: wrap;
     align-content: center;
-    row-gap: 4px;
+    row-gap: 0.25rem;
     height: auto;
-    min-height: 104px;
-    padding-block: 12px;
+    min-height: 6.5rem;
+    padding-block: 0.75rem;
   }
   .detail-page .breadcrumbs {
     flex-basis: 100%;
@@ -1007,99 +1052,99 @@ main:focus {
     margin-left: auto;
   }
   .site-header {
-    column-gap: 16px;
+    column-gap: 1rem;
   }
   :is(.home-page, .contact-page) .site-shell {
-    --header-height: 88px;
+    --header-height: 5.5rem;
   }
   .display-name {
-    font-size: clamp(25px, 6vw, 32px);
+    font-size: clamp(1.5625rem, 6.75vw, 2rem);
   }
   .intro-bio {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
   .intro-icons {
-    margin-top: 23px;
+    margin-top: 1.4375rem;
   }
   .feature {
-    padding: 36px 22px 32px;
-    border-radius: 22px;
+    padding: 2.25rem 1.375rem 2rem;
+    border-radius: 1.375rem;
   }
   .feature-copy h2 {
-    font-size: 22px;
-    max-width: 330px;
+    font-size: 1.375rem;
+    max-width: 20.625rem;
   }
   .feature-actions {
-    gap: 10px;
+    gap: 0.625rem;
   }
   .project-grid {
     grid-template-columns: 1fr;
   }
   .glass-card {
-    padding: 20px;
+    padding: 1.25rem;
   }
   .featured-works-heading {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding-block: 15px 30px;
+    gap: 0.875rem;
+    padding-block: 0.9375rem 1.875rem;
   }
   .footer-icons {
-    margin-left: -8px;
+    margin-left: -0.5rem;
   }
   .page-intro {
-    padding-top: 45px;
-    padding-bottom: 42px;
+    padding-top: 2.8125rem;
+    padding-bottom: 2.625rem;
   }
   .page-title {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .page-description {
-    font-size: 16px;
+    font-size: 1rem;
   }
   .collection-feature {
-    margin-bottom: 44px;
+    margin-bottom: 2.75rem;
   }
   .collection {
-    padding-top: 32px;
-    margin-bottom: 60px;
+    padding-top: 2rem;
+    margin-bottom: 3.75rem;
   }
   .detail-eyebrow {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
   .detail-body {
-    padding-block: 28px 50px;
+    padding-block: 1.75rem 3.125rem;
   }
   .prose {
-    font-size: 16px;
+    font-size: 1rem;
   }
   .project-pagination {
-    margin-bottom: 45px;
+    margin-bottom: 2.8125rem;
   }
   .next-project {
-    column-gap: 15px;
+    column-gap: 0.9375rem;
   }
   .next-project strong {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 26.71875em) {
   .site-header {
-    column-gap: 12px;
+    column-gap: 0.75rem;
   }
   .breadcrumbs {
-    font-size: 11px;
-    gap: 6px;
+    font-size: 0.6875rem;
+    gap: 0.375rem;
   }
   .main-nav {
-    gap: 16px;
+    gap: 1rem;
   }
   .main-nav > a {
-    font-size: 11px;
+    font-size: 0.6875rem;
   }
 }
 
