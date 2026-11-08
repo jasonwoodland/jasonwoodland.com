@@ -81,6 +81,7 @@ function shell(string $title, string $description, string $path, string $body, s
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="/assets/page-init.js" blocking="render"></script>
   <meta name="color-scheme" content="dark">
+  <meta name="darkreader-lock">
   <meta name="theme-color" content="#101010">
   <meta name="description" content="<?= t($description) ?>">
   <title><?= t($title) ?></title>
